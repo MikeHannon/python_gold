@@ -21,6 +21,9 @@ def process_gold(building):
     mybuildings = {'farm': random.randrange(5,11), 'casino': random.randrange(-50,51), 'house': random.randrange(0,6), 'cave': random.randrange(15,26)}
     gold = mybuildings[building]
     session['gold'] += gold
+    classtype = ('green','red')[gold <= 0]
+    behaviour = ('gained','lost')[gold <= 0]
+    session['activities'].append({'classtype':classtype,'text':'You visited the {}, and {} {}'.format(building, behaviour, str(gold))})
     return redirect('/')
 
 # Temporary reset route

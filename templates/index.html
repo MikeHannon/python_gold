@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>`Document`</title>
+  <style>
+  .red{
+    color:red;
+  }
+  .green{
+    color:green;
+  }
+  </style>
 </head>
 <body>
   {{session['gold']}}
@@ -12,8 +20,8 @@
   <button><a href = '/process_gold/casino'>casino</a></button>
   <button><a href = '/process_gold/cave'>cave</a></button>
   <!-- end buttons -->
-  {% for element in session['activities'] %}
-  {{element}} <span>These are dictionaries so need to be further resolved</span>
+  {% for element in session['activities'] | reverse %}
+    <p class = {{element['classtype']}}>{{element['text']}}</p>
   {% endfor %}
   <form action = '/reset' method = 'POST' >
     <button>RESET</button>
