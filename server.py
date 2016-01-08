@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, session
+import random
 app = Flask(__name__)
 app.secret_key = 'my_secret_key'
+
 # root -> load template
 #session variables needed: 'gold!' <-- int, 'activites!' <-- list with dictionaries inside!
 # post/get allow us to determine which type of building we went to
@@ -16,7 +18,9 @@ def initialize_page():
 
 @app.route('/process_gold/<building>') # is a get!
 def process_gold(building):
-    print (building)
+    mybuildings = {'farm': random.randrange(5,11), 'casino': random.randrange(-50,51), 'house': random.randrange(0,6), 'cave': random.randrange(15,26)}
+    gold = mybuildings[building]
+    session['gold'] += gold
     return redirect('/')
 
 # Temporary reset route
