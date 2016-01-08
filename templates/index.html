@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>`Document`</title>
+</head>
+<body>
+  {{session['gold']}}
+  <!-- Buttons that process gold -->
+  <button><a href = '/process_gold/farm'>Farm</a></button>
+  <button><a href = '/process_gold/house'>house</a></button>
+  <button><a href = '/process_gold/casino'>casino</a></button>
+  <button><a href = '/process_gold/cave'>cave</a></button>
+  <!-- end buttons -->
+  {% for element in session['activities'] %}
+  {{element}} <span>These are dictionaries so need to be further resolved</span>
+  {% endfor %}
+  <form methods = 'POST' action = '/reset'>
+    <button>RESET</button>
+  </form>
+</body>
+</html>
